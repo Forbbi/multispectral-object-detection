@@ -7,11 +7,10 @@
 
 
 # train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
-train_rgb: /home/fqy/DATA/LLVIP/visible/train.txt 
-val_rgb: /home/fqy/DATA/LLVIP/visible/test.txt  
-train_ir: /home/fqy/DATA/LLVIP/infrared/train.txt
-val_ir: /home/fqy/DATA/LLVIP/infrared/test.txt
-
+train_rgb: dataset/color/color_train.txt
+val_rgb: dataset/color/color_valid.txt
+train_ir: dataset/ir/ir_train.txt
+val_ir: dataset/ir/ir_valid.txt
 # number of classes
 nc: 1
 
