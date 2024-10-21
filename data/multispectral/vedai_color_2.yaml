@@ -10,10 +10,10 @@
 download: https://github.com/ultralytics/yolov5/releases/download/v1.0/coco128.zip
 
 # train and val data as 1) directory: path/images/, 2) file: path/images.txt, or 3) list: [path1/images/, path2/images/]
-train_rgb: /home/fqy/Data/vedai/Vehicules1024/Images/color/fold01.txt  # 128 images
-val_rgb: /home/fqy/Data/vedai/Vehicules1024/Images/color/fold01test.txt  # 128 images
-train_ir: /home/fqy/Data/vedai/Vehicules1024/Images/ir/fold01.txt  # 128 images
-val_ir: /home/fqy/Data/vedai/Vehicules1024/Images/ir/fold01test.txt  # 128 images
+train_rgb: dataset/color/color_train.txt
+val_rgb: dataset/color/color_valid.txt
+train_ir: dataset/ir/ir_train.txt
+val_ir: dataset/ir/ir_valid.txt
 
 # number of classes
 nc: 9
