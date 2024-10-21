@@ -586,7 +586,7 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
                 x[:, 0] = 0
 
         n = len(shapes)  # number of images
-        bi = np.floor(np.arange(n) / batch_size).astype(np.int)  # batch index
+        bi = np.floor(np.arange(n) / batch_size).astype(int)  # batch index
         nb = bi[-1] + 1  # number of batches
         self.batch = bi  # batch index of image
         self.n = n
@@ -614,7 +614,7 @@ class LoadImagesAndLabels(Dataset):  # for training/testing
                 elif mini > 1:
                     shapes[i] = [1, 1 / mini]
 
-            self.batch_shapes = np.ceil(np.array(shapes) * img_size / stride + pad).astype(np.int) * stride
+            self.batch_shapes = np.ceil(np.array(shapes) * img_size / stride + pad).astype(int) * stride
 
         # Cache images into memory for faster training (WARNING: large datasets may exceed system RAM)
         self.imgs = [None] * n
@@ -934,7 +934,7 @@ class LoadMultiModalImagesAndLabels(Dataset):  # for training/testing
             d = f"Scanning RGB '{cache_rgb_path}' images and labels... {nf_rgb} found, {nm_rgb} missing, {ne_rgb} empty, {nc_rgb} corrupted"
             tqdm(None, desc=prefix + d, total=n_rgb, initial=n_rgb)  # display cache results
         if exists_ir:
-            d = f"Scanning IR '{cache_rgb_path}' images and labels... {nf_ir} found, {nm_ir} missing, {ne_ir} empty, {nc_ir} corrupted"
+            d = f"Scanning IR '{cache_ir_path}' images and labels... {nf_ir} found, {nm_ir} missing, {ne_ir} empty, {nc_ir} corrupted"
             tqdm(None, desc=prefix + d, total=n_ir, initial=n_ir)  # display cache results
 
         assert nf_rgb > 0 or not augment, f'{prefix}No labels in {cache_rgb_path}. Can not train without labels. See {help_url}'
@@ -953,7 +953,7 @@ class LoadMultiModalImagesAndLabels(Dataset):  # for training/testing
                 x[:, 0] = 0
 
         n_rgb = len(shapes_rgb)  # number of images
-        bi_rgb = np.floor(np.arange(n_rgb) / batch_size).astype(np.int)  # batch index
+        bi_rgb = np.floor(np.arange(n_rgb) / batch_size).astype(int)  # batch index
         nb_rgb = bi_rgb[-1] + 1  # number of batches
         self.batch_rgb = bi_rgb  # batch index of image
         self.n_rgb = n_rgb
@@ -972,7 +972,7 @@ class LoadMultiModalImagesAndLabels(Dataset):  # for training/testing
                 x[:, 0] = 0
 
         n_ir = len(shapes_ir)  # number of images
-        bi_ir = np.floor(np.arange(n_ir) / batch_size).astype(np.int)  # batch index
+        bi_ir = np.floor(np.arange(n_ir) / batch_size).astype(int)  # batch index
         nb_ir = bi_ir[-1] + 1  # number of batches
         self.batch_ir = bi_ir  # batch index of image
         self.n_ir = n_ir
@@ -1029,7 +1029,7 @@ class LoadMultiModalImagesAndLabels(Dataset):  # for training/testing
                 elif mini > 1:
                     shapes_rgb[i] = [1, 1 / mini]
 
-            self.batch_shapes_rgb = np.ceil(np.array(shapes_rgb) * img_size / stride + pad).astype(np.int) * stride
+            self.batch_shapes_rgb = np.ceil(np.array(shapes_rgb) * img_size / stride + pad).astype(int) * stride
 
             # IR
             # Sort by aspect ratio
@@ -1052,7 +1052,7 @@ class LoadMultiModalImagesAndLabels(Dataset):  # for training/testing
                 elif mini > 1:
                     shapes_ir[i] = [1, 1 / mini]
 
-            self.batch_shapes_ir = np.ceil(np.array(shapes_ir) * img_size / stride + pad).astype(np.int) * stride
+            self.batch_shapes_ir = np.ceil(np.array(shapes_ir) * img_size / stride + pad).astype(int) * stride
 
         # Cache images into memory for faster training (WARNING: large datasets may exceed system RAM)
         self.imgs_rgb = [None] * n_rgb
@@ -2011,7 +2011,7 @@ def extract_boxes(path='../coco128/'):  # from utils.datasets import *; extract_
                     b = x[1:] * [w, h, w, h]  # box
                     # b[2:] = b[2:].max()  # rectangle to square
                     b[2:] = b[2:] * 1.2 + 3  # pad
-                    b = xywh2xyxy(b.reshape(-1, 4)).ravel().astype(np.int)
+                    b = xywh2xyxy(b.reshape(-1, 4)).ravel().astype(int)
 
                     b[[0, 2]] = np.clip(b[[0, 2]], 0, w)  # clip boxes outside of image
                     b[[1, 3]] = np.clip(b[[1, 3]], 0, h)
