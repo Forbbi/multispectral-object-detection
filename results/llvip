@@ -1,1 +1,10 @@
 result
+Recall : 0.96   
+Prescion : 0.927       
+mAP 50 : 96.5 
+mAP 75 : 69.6 
+mAP    : 60.2
+In research Paper 
+mAP 50 : 97.5
+mAP 75 : 72.9
+mAP    : 63.6
