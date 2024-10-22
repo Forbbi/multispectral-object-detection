@@ -37,9 +37,8 @@ yolov5 weights (pre-train)
 
 -[yolov5x] [google drive](https://drive.google.com/file/d/1e9xiQImx84KFQ_a7XXpn608I3rhRmKEn/view?usp=sharing)
 
-
-#### Change the data cfg
-some example in data/multispectral/
+###File structure 
+Scrrenshot shared with you can see in github files
 
 #### Change the model cfg
 some example in models/transformer/
